@@ -1,0 +1,21 @@
+[project]
+name = "backend-lecture"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aiosqlite>=0.21.0",
+    "alembic>=1.14.1",
+    "asyncpg>=0.30.0",
+    "fastapi[standard]>=0.115.8",
+    "greenlet>=3.1.1",
+    "pydantic-settings>=2.7.1",
+    "sqlalchemy>=2.0.37",
+]
+
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "space"
+exclude = ["alembic/env.py"]
