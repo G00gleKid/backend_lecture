@@ -4,6 +4,7 @@ from app.api.addresses.router import addresses_router
 from app.items import items_router
 from app.db.database import engine
 from app.db import models
+from settings import settings
 
 app = FastAPI(title='My App')
 
@@ -40,8 +41,9 @@ app.include_router(users_router, tags=['Users'])
 app.include_router(addresses_router, tags=['Addresses'])
 
 
-# Эта часть кода применяет миграции после старта приложения, так как используется БД находится в оперативной памяти
+# Эта часть кода применяет миграции после старта приложения, так как используемая база данных в приложении — находится в оперативной памяти
 @app.on_event('startup')
 async def startup():
-    async with engine.begin() as conn:
-        await conn.run_sync(models.Base.metadata.create_all)
+    if settings.DATABASE_URI == 'sqlite+aiosqlite:///:memory:"':        
+        async with engine.begin() as conn:
+            await conn.run_sync(models.Base.metadata.create_all)
