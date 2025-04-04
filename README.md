@@ -5,7 +5,7 @@
 	`uv venv`
 4. Активируем виртуальное окружение	
 
-   Для MacOS — `source .venv/bin/activate`
+   Для MacOS/Linux — `source .venv/bin/activate`
 
    Для Windows — `.venv\Scripts\activate`
 6. Устанавливаем зависимости
